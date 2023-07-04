@@ -20,20 +20,51 @@ const damion = Damion({
 gsap.registerPlugin(ScrollTrigger)
 
 
-function colorChangeOnScroll(){
+export default function Home() {
   useEffect(()=>{
     const scrollBar = Scrollbar.init(document.querySelector('.main'),{
       damping:0.06,
       alwaysShowTracks:false,
       speed:3
     })
+    ScrollTrigger.defaults({
+      scroller:'.main'
+    })
+    ScrollTrigger.scrollerProxy('.main', {
+      scrollTop(value) {
+        if (arguments.length) {
+          scrollBar.scrollTop = value;
+        }
+        return scrollBar.scrollTop;
+      },
+    });
+    scrollBar.addListener(ScrollTrigger.update)
+    const sectionColor = document.querySelectorAll('[data-bgcolor]')
+    sectionColor.forEach((col,i)=>{
+      const prevBgColor = i === 0 ? '' : sectionColor[i - 1].dataset.bgcolor
+      const prevTextColor = i === 0 ? '' : sectionColor[i - 1].dataset.textcolor
+      ScrollTrigger.create({
+        trigger: col,
+        scroller: '.main',
+        start: 'top 50%',
+        onEnter: () =>
+          gsap.to('.main', {
+            backgroundColor: col.dataset.bgcolor,
+            color: col.dataset.textcolor,
+            overwrite: 'auto',
+          }),
+        onLeaveBack: () =>
+          gsap.to('.main', {
+            backgroundColor: prevBgColor,
+            color: prevTextColor,
+            overwrite: 'auto',
+          }),
+      })
+    })
+    return () => {}
   },[])
-
-}
-
-export default function Home() {
   return (
-    <div className="main h-screen w-full flex flex-col overflow-x-hidden ">
+    <div className="main h-screen w-full flex flex-col overflow-x-hidden">
       <section className="min-h-screen w-screen relative flex items-center justify-center px-32" data-bgcolor="#070707" data-textcolor="#ffffff">
         <div className="w-full  text-[9vw] leading-[1.1] tracking-tighter ">
           <span className={`${poppins.className} text-left`}>
