@@ -2,11 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@layer components{
+  .rondop{
+    @apply uppercase tracking-wide text-sm font-extrabold
+  }
+}
 
 .wrapper{
   width:min(100% - 3rem,65ch);
   margin-inline: auto;
+}
+
+.logo{
+  mix-blend-mode: difference ;
+  color: white;
 }
 
 .test2-section{

@@ -14,6 +14,9 @@ const Nav = () => {
                 <Link href='/test2'>
                     Test2
                 </Link>
+                <Link href='/test3'>
+                    Test3
+                </Link>
             </div>
         </div>
     )
