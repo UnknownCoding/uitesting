@@ -10,7 +10,7 @@ const page = () => {
             <div className='flex gap-x-[30px]'>
                 {["shoe","watch","headphones"].map((product)=>(
                     <Link href={`/test1/${product}`}>
-                        <motion.img animate={{scale:1}} layoutId={product} whileHover={{scale:1.1}} src={product+".jpg"} alt='' className='h-[300px] object-cover cursor-pointer w-[300px] rounded-lg'/>
+                        <motion.img layoutId={product} whileHover={{scale:1.1}} src={product+".jpg"} alt='' className='h-[300px] object-cover cursor-pointer w-[300px] rounded-lg'/>
                     </Link>
                 ))}
             </div>
