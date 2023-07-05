@@ -11,11 +11,11 @@ const poppins = Poppins({
 
 function page() {
     return (
-        <div className='w-screen h-screen bg-[#5F6B9D]'>
+        <motion.div animate={{opacity:1}} transition={{duration:0.6,ease:[0.43,0.13,0.23,0.96]}} initial={{opacity:1}} className='w-screen h-screen bg-[#5F6B9D]'>
             <div className='w-full'>
                 <div className='max-w-max mx-auto pt-[150px]'>
                     <div className='flex justify-between items-center'>
-                        <p className='rondop'>TRAINING CHAMPIONS LEAGUE FINAL</p>
+                        <p className='rondop'>CHAMPIONS LEAGUE FINAL</p>
                         <p className='rondop'> 2017-CARDIFF</p>
                     </div>
                     <h1 className={`${poppins.className} font-extrabold text-[90px]`}>CRISTIANO RONALDO</h1>
@@ -29,7 +29,7 @@ function page() {
                     className='w-full object-center object-cover h-full'
                     />
             </div>
-        </div>
+        </motion.div>
     )
 }
 
